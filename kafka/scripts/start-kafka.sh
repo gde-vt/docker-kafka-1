@@ -18,6 +18,10 @@ if [ ! -z "$HELIOS_PORT_kafka" ]; then
 fi
 
 # Set the external host and port
+if [ ! -z "$ADVERTISED_HOST_CMD" ]; then
+    ADVERTISED_HOST=`$ADVERTISED_HOST_CMD`
+fi
+
 if [ ! -z "$ADVERTISED_HOST" ]; then
     echo "advertised host: $ADVERTISED_HOST"
     if grep -q "^advertised.host.name" $KAFKA_HOME/config/server.properties; then
